@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GestionEmpleadosApp.Views.DetalleEmpleadoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:GestionEmpleadosApp.ViewModels"
+    Title="Empleado">
+
+    <ContentPage.BindingContext>
+        <viewmodels:DetalleEmpleadoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Image Source="{Binding FotoPreview}" WidthRequest="120" HeightRequest="120" BackgroundColor="#eeeeee"/>
+            <Button Text="Tomar foto" Command="{Binding TomarFotoCommand}" />
+            <Button Text="Guardar" BackgroundColor="#2ECC71" TextColor="White" Command="{Binding GuardarCommand}" />
+
+            <Entry Placeholder="Nombre" Text="{Binding Empleado.Nombre}" />
+            <Entry Placeholder="Puesto" Text="{Binding Empleado.Puesto}" />
+            <Entry Placeholder="Correo" Keyboard="Email" Text="{Binding Empleado.Correo}" />
+            <DatePicker Date="{Binding Empleado.FechaIngreso}" />
+
+            <Button Text="Guardar" BackgroundColor="#2ECC71" TextColor="White" Command="{Binding GuardarCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
