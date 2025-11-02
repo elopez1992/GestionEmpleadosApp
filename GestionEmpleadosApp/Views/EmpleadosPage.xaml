@@ -44,69 +44,92 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Margin="6"
-                           Padding="10"
-                           CornerRadius="12"
-                           HasShadow="True"
-                           BorderColor="#3498DB"
-                           BackgroundColor="#FDFEFE">
+                   Padding="10"
+                   CornerRadius="12"
+                   HasShadow="True"
+                   BorderColor="#3498DB"
+                   BackgroundColor="#FDFEFE">
 
                         <Grid ColumnDefinitions="80,*,Auto"
-                              RowDefinitions="Auto,Auto"
-                              ColumnSpacing="10"
-                              RowSpacing="4">
+                      RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="4">
 
                             <!-- Foto -->
-                            <Image Grid.RowSpan="2"
-                                   Grid.Column="0"
-                                   Source="{Binding FotoBase64, Converter={StaticResource Base64ToImageConverter}}"
-                                   WidthRequest="64"
-                                   HeightRequest="64"
-                                   Aspect="AspectFill"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Clip="RoundRectangleGeometry CornerRadius=12" />
+                            <Image Grid.RowSpan="5"
+                           Grid.Column="0"
+                           Source="{Binding FotoBase64, Converter={StaticResource Base64ToImageConverter}}"
+                           WidthRequest="64"
+                           HeightRequest="64"
+                           Aspect="AspectFill"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Clip="RoundRectangleGeometry CornerRadius=12" />
+
+                            <!-- Id -->
+                            <Label Grid.Column="1"
+                           Grid.Row="0"
+                           Text="{Binding Id, StringFormat='ID: {0}'}"
+                           FontSize="13"
+                           TextColor="#7D3C98"
+                           FontAttributes="Bold" />
 
                             <!-- Nombre -->
                             <Label Grid.Column="1"
-                                   Text="{Binding Nombre}"
-                                   FontAttributes="Bold"
-                                   FontSize="16"
-                                   TextColor="#2C3E50" />
+                           Grid.Row="1"
+                           Text="{Binding Nombre}"
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           TextColor="#2C3E50" />
 
                             <!-- Puesto -->
                             <Label Grid.Column="1"
-                                   Grid.Row="1"
-                                   Text="{Binding Puesto}"
-                                   FontSize="14"
-                                   TextColor="#7F8C8D" />
+                           Grid.Row="2"
+                           Text="{Binding Puesto}"
+                           FontSize="14"
+                           TextColor="#7F8C8D" />
+
+                            <!-- Correo -->
+                            <Label Grid.Column="1"
+                           Grid.Row="3"
+                           Text="{Binding Correo}"
+                           FontSize="13"
+                           TextColor="#34495E" />
+
+                            <!-- Fecha de ingreso -->
+                            <Label Grid.Column="1"
+                           Grid.Row="4"
+                           Text="{Binding FechaIngreso, StringFormat='Ingresó: {0:dd/MM/yyyy}'}"
+                           FontSize="13"
+                           TextColor="#16A085" />
 
                             <!-- Botones de acción -->
-                            <HorizontalStackLayout Grid.Column="2"
-                                                   Grid.RowSpan="2"
-                                                   Spacing="6"
-                                                   VerticalOptions="Center">
+                            <VerticalStackLayout Grid.Column="2"
+                                         Grid.RowSpan="5"
+                                         Spacing="6"
+                                         VerticalOptions="Center">
 
                                 <Button Text="Editar"
-                                        BackgroundColor="#2980B9"
-                                        TextColor="White"
-                                        CornerRadius="8"
-                                        Padding="8,4"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditarCommand}"
-                                        CommandParameter="{Binding}" />
+                                BackgroundColor="#2980B9"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Padding="8,4"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditarCommand}"
+                                CommandParameter="{Binding}" />
 
                                 <Button Text="Eliminar"
-                                        BackgroundColor="#E74C3C"
-                                        TextColor="White"
-                                        CornerRadius="8"
-                                        Padding="8,4"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EliminarCommand}"
-                                        CommandParameter="{Binding}" />
-                            </HorizontalStackLayout>
+                                BackgroundColor="#E74C3C"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Padding="8,4"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EliminarCommand}"
+                                CommandParameter="{Binding}" />
+                            </VerticalStackLayout>
                         </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>
-
